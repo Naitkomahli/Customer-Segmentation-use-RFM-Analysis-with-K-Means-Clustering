@@ -1,0 +1,11 @@
+# Dokumen internal (tidak untuk dipublish di repo portfolio)
+project_context.md
+AGENTS.md
+
+# Dataset besar (bisa didapat ulang dari Kaggle, jangan dibikin repo bengkak)
+dataset/*.csv
+
+# Sampah Python & Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
