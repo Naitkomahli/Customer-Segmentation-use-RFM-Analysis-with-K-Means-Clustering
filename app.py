@@ -61,21 +61,21 @@ st.dataframe(prof)
 
 # Bar chart jumlah
 st.subheader("Jumlah Customer per Segmen")
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=(7, 4))
 rfm['Segment'].value_counts().plot(kind='bar', ax=ax)
 plt.xticks(rotation=20)
-st.pyplot(fig)
+st.pyplot(fig, use_container_width=False)
 
 # Scatter peta segmentasi
 st.subheader("Peta Segmentasi (Recency vs Monetary)")
-fig2, ax2 = plt.subplots()
+fig2, ax2 = plt.subplots(figsize=(7, 5))
 for seg in rfm['Segment'].unique():
     sub = rfm[rfm['Segment'] == seg]
     ax2.scatter(sub['Recency'], sub['Monetary'], label=seg, s=10, alpha=0.6)
 ax2.set_xlabel('Recency')
 ax2.set_ylabel('Monetary')
 ax2.legend()
-st.pyplot(fig2)
+st.pyplot(fig2, use_container_width=False)
 
 # Fitur interaktif: cek 1 customer
 st.subheader("Cek Segmen Customer")
