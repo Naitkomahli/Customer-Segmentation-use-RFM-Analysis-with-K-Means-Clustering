@@ -60,24 +60,27 @@ prof['Jumlah'] = rfm['Segment'].value_counts()
 st.dataframe(prof)
 
 # Dua chart berdampingan: kiri = bar jumlah, kanan = scatter segmentasi
+# Ukuran figsize SAMA PERSIS (6.5, 4.5) + tight_layout -> render identik
 col_left, col_right = st.columns(2)
 
 with col_left:
     st.subheader("Jumlah Customer per Segmen")
-    fig, ax = plt.subplots(figsize=(6, 4))
+    fig, ax = plt.subplots(figsize=(6.5, 4.5))
     rfm['Segment'].value_counts().plot(kind='bar', ax=ax)
     plt.xticks(rotation=20)
+    plt.tight_layout()
     st.pyplot(fig, use_container_width=True)
 
 with col_right:
     st.subheader("Peta Segmentasi (Recency vs Monetary)")
-    fig2, ax2 = plt.subplots(figsize=(6, 4))
+    fig2, ax2 = plt.subplots(figsize=(6.5, 4.5))
     for seg in rfm['Segment'].unique():
         sub = rfm[rfm['Segment'] == seg]
         ax2.scatter(sub['Recency'], sub['Monetary'], label=seg, s=12, alpha=0.6)
     ax2.set_xlabel('Recency')
     ax2.set_ylabel('Monetary')
     ax2.legend()
+    plt.tight_layout()
     st.pyplot(fig2, use_container_width=True)
 
 # Fitur interaktif: cek 1 customer
